@@ -14,7 +14,7 @@ const projects: Project[] = [
         name: "samscript",
         description: "scripting language i wrote to see how interpreters work",
         url: "https://github.com/sammaji/samscript-ts",
-        image: "https://www.sammaji.tech/_next/image?url=%2Fimages%2Fsamscript.webp&w=1920&q=100",
+        image: "/img/samscript.png",
     },
     {
         name: "hono-server-cache",
@@ -26,7 +26,7 @@ const projects: Project[] = [
         name: "dns-server",
         description: "simple toy dns resolver",
         url: "https://github.com/sammaji/toy-dns-server",
-        image: "https://www.sammaji.tech/_next/image?url=%2Fimages%2Fdns-server.webp&w=1920&q=100",
+        image: "/img/dns-server.png",
     },
 ];
 
