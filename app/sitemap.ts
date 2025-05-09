@@ -51,6 +51,12 @@ query Publication {
 			lastModified: new Date(),
 			priority: 1,
 		},
+		{
+			url: "https://sammaji.tech/work",
+			changeFrequency: "weekly",
+			lastModified: new Date(),
+			priority: 1,
+		},
 		...blogs,
 		...work,
 	];

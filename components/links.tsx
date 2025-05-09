@@ -6,11 +6,14 @@ export const links = {
     links: [
         { name: "X", href: "https://x.com/sammaji15" },
         { name: "Notes", href: "https://notes.sammaji.tech" },
-        //{ name: "Code setup", href: "/work/code-setup" },
         {
             name: "Reading list",
             href: "https://sammaji.notion.site/reading-list-2025",
         },
+        {
+            name: "Coding setup",
+            href: "/work/coding-setup",
+        }
     ],
 };
 
@@ -25,7 +28,7 @@ export const socials = {
 export function Links({ url }: { url: typeof links }) {
     return (
         <div className="space-y-8">
-            <h1>{url.title}</h1>
+            <h1 className="font-medium">{url.title}</h1>
 
             <ul className="space-y-4">
                 {url.links.map((link, i) => (

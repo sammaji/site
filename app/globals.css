@@ -235,3 +235,7 @@ p {
 		@apply list-decimal;
 	}
 }
+
+.transition-default {
+    @apply transition-all duration-300 ease-[cubic-bezier(0,0,0.58,1)];
+}

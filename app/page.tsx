@@ -1,14 +1,26 @@
 import { links, Links, socials } from "@/components/links";
+import { Markdown } from "@/components/markdown";
 import { Nav } from "@/components/nav";
-import { Projects } from "@/components/projects";
+import { ProjectsCompact } from "@/components/projects";
+import { markdown } from "@/lib/markdown";
+import React from "react";
 
-export default function Home() {
+export default async function Home() {
+    const intro = await markdown("home", "intro.md");
+    const contact = await markdown("home", "contact.md");
     return (
-        <div className="text-gray-1200 mx-auto max-w-[692px] space-y-16 overflow-x-hidden px-6 py-12 antialiased sm:py-32 md:overflow-x-visible md:py-16">
-            <Nav />
-            <p>Average software engineer. I love working on compilers and databases :)</p>
+        <React.Fragment>
 
-            <Projects />
+            <img className="transition-default rounded-xl -rotate-6 grayscale hover:rotate-0 hover:grayscale-0" src="https://avatars.githubusercontent.com/u/116789799?s=200&u=67949327fda8146222882ecd001e9ba59f87e848&v=4" />
+            {typeof intro !== "number" && <Markdown html={intro.html} />}
+
+            <ProjectsCompact />
+
+            <div className="space-y-8">
+                <h1 className="font-medium">Contact</h1>
+                {typeof contact !== "number" && <Markdown html={contact.html} />}
+            </div>
+
 
             {/*
             <div className="space-y-8">
@@ -29,6 +41,6 @@ export default function Home() {
 
 
             <Links url={links} />
-        </div>
+        </React.Fragment>
     );
 }

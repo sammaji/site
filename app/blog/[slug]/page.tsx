@@ -94,8 +94,6 @@ export default async function Page({
     const { slug } = await params;
     const data = await getPost(slug);
 
-    console.log(data);
-
     if (data.data.publication.post.content === null) return notFound();
 
     const publishedAt = format(

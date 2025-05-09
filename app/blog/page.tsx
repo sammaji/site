@@ -42,8 +42,6 @@ async function getBlogs(): Promise<Posts> {
         "https://gql.hashnode.com",
         { query },
     );
-    console.log(data);
-    console.log(status);
     return data;
 }
 
@@ -65,7 +63,6 @@ function organisePosts(posts: Posts): Record<string, any[]> {
         (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
     );
     const groupedPosts = groupBy(sortedPosts, "year");
-    console.log(groupedPosts);
     return groupedPosts as Record<string, any[]>;
 }
 
@@ -77,11 +74,6 @@ export default async function Page() {
 
     return (
         <React.Fragment>
-            <div className="flex items-center justify-between">
-                <h1>Blogs</h1>
-                {/*<input type="text" placeholder="Search" className="w-full max-w-[300px] rounded-lg border p-2 text-sm" />*/}
-            </div>
-
             <div>
                 {sortedKeys.map((key, i) => {
                     const posts = data[key];
