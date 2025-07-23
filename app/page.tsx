@@ -1,8 +1,9 @@
-import { links, Links, socials } from "@/components/links";
+import { Experience } from "@/components/experience";
+import { links, Links } from "@/components/links";
 import { Markdown } from "@/components/markdown";
-import { Nav } from "@/components/nav";
 import { ProjectsCompact } from "@/components/projects";
 import { markdown } from "@/lib/markdown";
+import Link from "next/link";
 import React from "react";
 
 export default async function Home() {
@@ -10,17 +11,21 @@ export default async function Home() {
     const contact = await markdown("home", "contact.md");
     return (
         <React.Fragment>
-
-            <img className="transition-default rounded-xl -rotate-6 grayscale hover:rotate-0 hover:grayscale-0" src="https://avatars.githubusercontent.com/u/116789799?s=200&u=67949327fda8146222882ecd001e9ba59f87e848&v=4" />
+            <img
+                className="w-48 transition-default -rotate-6 rounded-xl grayscale hover:rotate-0 hover:grayscale-0"
+                src="/img/me.jpeg"
+            />
             {typeof intro !== "number" && <Markdown html={intro.html} />}
 
+            <Experience />
             <ProjectsCompact />
 
             <div className="space-y-8">
-                <h1 className="font-medium">Contact</h1>
-                {typeof contact !== "number" && <Markdown html={contact.html} />}
+                <h2 className="text-xl">Contact</h2>
+                {typeof contact !== "number" && (
+                    <Markdown html={contact.html} />
+                )}
             </div>
-
 
             {/*
             <div className="space-y-8">
@@ -38,7 +43,6 @@ export default async function Home() {
                 </form>
             </div>
             */}
-
 
             <Links url={links} />
         </React.Fragment>

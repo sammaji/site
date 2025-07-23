@@ -1,24 +1,35 @@
-import Link from "next/link";
-import { ScrollArea, ScrollBar } from "./ui/scroll-area";
-import React from "react";
-import { cn } from "@/lib/utils";
-import { gradients } from "./gradients";
 import { hashString } from "@/lib/hash";
-
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
+import { gradients } from "./gradients";
+import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
 type Project = {
     name: string;
     description: string;
     url: string;
     image?: string;
-}
+};
 
 const projects: Project[] = [
+    {
+        name: "atomo",
+        description: "a fast file manager with loads of useful features - fuzzy search, multi-pane, reliable copy, etc.",
+        url: "https://github.com/sammaji/typer",
+        image: "/img/atomo.png",
+    },
     {
         name: "budgetbee",
         description: "Simple expense tracker :)",
         url: "https://www.budgetbee.site",
         image: "/img/budgetbee.webp",
+    },
+    {
+        name: "typer",
+        description: "A tool to help you learn touch typing.",
+        url: "https://github.com/sammaji/typer",
+        image: "/img/typer.webp",
     },
     {
         name: "samscript",
@@ -28,15 +39,10 @@ const projects: Project[] = [
     },
     {
         name: "hono-server-cache",
-        description: "A flexible server-side caching middleware for Hono applications.",
+        description:
+            "A flexible server-side caching middleware for Hono applications.",
         url: "https://github.com/sammaji/hono-server-cache",
         image: "/img/hono-server-cache.webp",
-    },
-    {
-        name: "typer",
-        description: "A tool to help you learn touch typing.",
-        url: "https://github.com/sammaji/typer",
-        image: "/img/typer.webp",
     },
     {
         name: "dns-server",
@@ -51,7 +57,8 @@ const projects: Project[] = [
     },
     {
         name: "html-parser",
-        description: "Html parser designed to be fast not exhaustive. Designed to be extended for custom parsing needs.",
+        description:
+            "Html parser designed to be fast not exhaustive. Designed to be extended for custom parsing needs.",
         url: "https://github.com/sammaji/fast-html-parser",
     },
     {
@@ -63,7 +70,7 @@ const projects: Project[] = [
     {
         name: "tinytui",
         description: "Create declarative tui",
-        url: "https://github.com/sammaji/tinytui"
+        url: "https://github.com/sammaji/tinytui",
     },
 ];
 
@@ -71,20 +78,23 @@ export function Project({ project }: { project: Project }) {
     return (
         <Link href={project.url}>
             <div className="max-w-72 rounded-lg border">
-                {project.image && <img className="rounded-t-lg" src={project.image} />}
-                {
-                    !project.image && <div className="relative w-72 h-36 rounded-t-lg">
+                {project.image && (
+                    <img className="rounded-t-lg" src={project.image} />
+                )}
+                {!project.image && (
+                    <div className="relative h-36 w-72 rounded-t-lg">
                         <span
                             className={cn(
-                                gradients[hashString(project.name, gradients.length)],
-                                "opacity-50 absolute inset-0 rounded-t-lg"
-                            )}
-                        ></span>
+                                gradients[
+                                hashString(project.name, gradients.length)
+                                ],
+                                "absolute inset-0 rounded-t-lg opacity-50",
+                            )}></span>
                         <div className="absolute inset-0 flex items-center justify-center">
                             <h1 className="text-4xl">{project.name}</h1>
                         </div>
                     </div>
-                }
+                )}
                 <div className="rounded-b-lg bg-[#0D0D0C] p-4">
                     <span>{project.name}</span>
                     <p className="line-clamp-3 text-base text-ellipsis">
@@ -93,16 +103,15 @@ export function Project({ project }: { project: Project }) {
                 </div>
             </div>
         </Link>
-    )
+    );
 }
 
 export function ProjectsCompact() {
-    const PROJECTS = 4;
+    const PROJECTS = 3;
     return (
         <div className="flex flex-col gap-8">
-
             <div className="flex justify-between">
-                <h1 className="font-medium">Work</h1>
+                <h2 className="text-xl">Projects</h2>
                 <Link href="/work">See all</Link>
             </div>
 
@@ -123,7 +132,7 @@ export function ProjectsCompact() {
 export function ProjectsExtended() {
     return (
         <div className="space-y-8">
-            <h1 className="font-medium">Projects</h1>
+            <h2 className="text-xl">Projects</h2>
 
             <div className="flex flex-wrap gap-4 pb-4">
                 {projects.map((project, i) => (
@@ -133,5 +142,5 @@ export function ProjectsExtended() {
                 ))}
             </div>
         </div>
-    )
+    );
 }

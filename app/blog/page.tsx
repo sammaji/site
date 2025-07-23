@@ -79,30 +79,29 @@ export default async function Page() {
                     const posts = data[key];
                     return (
                         <React.Fragment key={i}>
-                            <div className="relative border-b first:border-t">
-                                <p className="absolute top-4">{key}</p>
-
-                                {posts.map((post, j) => {
-                                    const date = format(
-                                        post.publishedAt,
-                                        "LL/dd",
-                                    );
-                                    return (
-                                        <React.Fragment key={j}>
-                                            <div className="flex justify-between gap-4 p-4 pl-[25%] last:pb-4">
-                                                <Link
-                                                    href={`/blog/${post.slug}`}
-                                                    className="line-clamp-1 grow">
-                                                    {post.title}
-                                                </Link>
-                                                <p>{date}</p>
-                                            </div>
-                                            {j !== post.length - 1 && (
-                                                <div className="ml-[25%] h-[1px] w-auto bg-[#262626]"></div>
-                                            )}
-                                        </React.Fragment>
-                                    );
-                                })}
+                            <div className="not-first:mt-8">
+                                <h2 className="text-xl">{key}</h2>
+                                <div>
+                                    {posts.map((post, j) => {
+                                        const date = format(
+                                            post.publishedAt,
+                                            "LL/dd",
+                                        );
+                                        return (
+                                            <React.Fragment key={j}>
+                                                <div className="flex py-4 gap-2 items-center hover:brightness-150 transition-default">
+                                                    <Link
+                                                        href={`/blog/${post.slug}`}
+                                                        className="line-clamp-1 grow text-muted-foreground">
+                                                        {post.title}
+                                                    </Link>
+                                                    <p>{date}</p>
+                                                </div>
+                                                {(j !== posts.length - 1) && <hr />}
+                                            </React.Fragment>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </React.Fragment>
                     );

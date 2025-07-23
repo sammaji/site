@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -16,7 +16,14 @@ export function Nav() {
         <nav>
             <ul className="flex items-center gap-8">
                 {links.map(link => (
-                    <li key={link.name} className={cn("transition-default hover:text-primary", pathname === link.href ? "text-primary" : "text-muted-foreground")}>
+                    <li
+                        key={link.name}
+                        className={cn(
+                            "transition-default hover:text-primary",
+                            pathname === link.href ?
+                                "text-primary"
+                                : "text-muted-foreground",
+                        )}>
                         <Link href={link.href}>{link.name}</Link>
                     </li>
                 ))}

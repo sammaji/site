@@ -4,7 +4,6 @@ export function hashString(s: string, range: number) {
 		hash = (hash << 5) + hash + s.charCodeAt(i);
 		hash = hash & hash;
 	}
-
 	hash = Math.abs(hash);
 	return hash % range;
 }

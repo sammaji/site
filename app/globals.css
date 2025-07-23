@@ -16,7 +16,7 @@
 	--secondary: oklch(0.97 0 0);
 	--secondary-foreground: oklch(0.205 0 0);
 	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
+	--muted-foreground: oklch(0.709 0 0);
 	--accent: oklch(0.97 0 0);
 	--accent-foreground: oklch(0.205 0 0);
 	--destructive: oklch(0.577 0.245 27.325);
@@ -195,6 +195,7 @@
 	}
 }
 
+@layer components {
 p {
 	@apply text-gray-1100 text-lg;
 }
@@ -206,12 +207,18 @@ p {
 	h4,
 	h5,
 	h6 {
-		@apply text-primary text-lg font-semibold not-first:mt-8;
+		@apply text-primary not-first:mt-8;
 	}
+
+    h1 { @apply text-3xl ; }
+
 	p {
-		@apply text-primary text-lg not-first:mt-4;
+		@apply text-muted-foreground text-lg not-first:mt-4;
 	}
-    a  { @apply underline underline-offset-4; }
+    strong {
+        @apply font-semibold;
+    }
+    a:not(.base)  { @apply text-primary underline underline-offset-4; }
 	img {
 		@apply rounded-lg not-first:mt-4;
 	}
@@ -226,7 +233,7 @@ p {
 	}
 	ul,
 	ol {
-		@apply my-6 ml-6 [&>li]:mt-2;
+		@apply my-6 ml-6 [&>li]:mt-2 [&>li]:text-muted-foreground;
 	}
 	ul {
 		@apply list-disc;
@@ -234,8 +241,23 @@ p {
 	ol {
 		@apply list-decimal;
 	}
+    hr { @apply mt-4; }
+}
 }
 
 .transition-default {
     @apply transition-all duration-300 ease-[cubic-bezier(0,0,0.58,1)];
+}
+
+
+/* CAROUSEL */
+.embla {
+  overflow: hidden;
+}
+.embla__container {
+  display: flex;
+}
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }

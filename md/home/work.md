@@ -4,6 +4,7 @@ I take a few clients on Upwork. Built 20+ saas products for my clients. Some of 
 
 - [Artvy gallery](https://gallery.artvy.ai) — A gallery of ai generated artworks. Built the front-end, migrated data from Airtable to PayloadCMS, did some technical SEO work. Recieves 70k+ monthly page views.
 - [Suppalyze](https://www.suppalyze.com) — Supplements directory. Built frontend, backend (auth, subscriptions, yada yada), cms integration and a forum.
+- Gasar Project — Built an internal tool for [Venus Remedies](https://venusremedies.com/) to manage microbial specimens samples across multiple labs / hospitals.
 
 ## BairesDev
 
