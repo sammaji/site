@@ -16,7 +16,7 @@ const projects: Project[] = [
     {
         name: "atomo",
         description: "a fast file manager with loads of useful features - fuzzy search, multi-pane, reliable copy, etc.",
-        url: "https://github.com/sammaji/typer",
+        url: "https://atomo.sammaji.tech",
         image: "/img/atomo.png",
     },
     {
