@@ -12,6 +12,4 @@ Ux of csv imports, I can talk on this for hours. Turns out building a comprehens
 - Feedbacks — proper feedbacks, so user knows whats going on
 - SYNC — we needed to build a system to sync data (not just one way import) across multiple CRMs.
 
-Here's how the dashboard looks:
-
-![Careshift](/img/careshift-shifts.png)
+![Careshift](/img/careshift-dashboard.png)

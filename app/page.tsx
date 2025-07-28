@@ -2,8 +2,8 @@ import { Experience } from "@/components/experience";
 import { links, Links } from "@/components/links";
 import { Markdown } from "@/components/markdown";
 import { ProjectsCompact } from "@/components/projects";
+import { ProjectsMarquee } from "@/components/projects-marquee";
 import { markdown } from "@/lib/markdown";
-import Link from "next/link";
 import React from "react";
 
 export default async function Home() {
@@ -17,6 +17,7 @@ export default async function Home() {
             />
             {typeof intro !== "number" && <Markdown html={intro.html} />}
 
+            <ProjectsMarquee />
             <Experience />
             <ProjectsCompact />
 
