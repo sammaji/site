@@ -1,23 +1,27 @@
 import { Markdown } from "@/components/markdown";
 import { markdown } from "@/lib/markdown";
-import { notFound } from "next/navigation";
+import { ArrowUpLeft } from "lucide-react";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
-import { ArrowUpLeft, MoveUpLeft } from "lucide-react";
 
 export default async function Page({
-    params,
+	params,
 }: {
-    params: Promise<{ slug: string }>;
+	params: Promise<{ slug: string }>;
 }) {
-    const { slug } = await params;
-    const data = await markdown("work", `${slug}.md`);
-    if (typeof data === "number" && data === 404) throw notFound();
+	const { slug } = await params;
+	const data = await markdown("work", `${slug}.md`);
+	if (typeof data === "number" && data === 404) throw notFound();
 
-    return (
-        <React.Fragment>
-            <Link href="/" className="absolute hover:text-primary transition-default inline-flex items-center -translate-x-full pr-32 text-muted-foreground"><ArrowUpLeft /> Home</Link>
-            <Markdown html={data.html} />
-        </React.Fragment>
-    );
+	return (
+		<React.Fragment>
+			<Link
+				href="/"
+				className="hover:text-primary transition-default text-muted-foreground absolute inline-flex -translate-x-full items-center pr-32">
+				<ArrowUpLeft /> Home
+			</Link>
+			<Markdown html={data.html} />
+		</React.Fragment>
+	);
 }

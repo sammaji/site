@@ -1,5 +1,6 @@
-import Link from "next/link"
-import React from "react"
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import React from "react";
 
 const experience = [
     {
@@ -7,7 +8,8 @@ const experience = [
         logo: "/img/careshift.png",
         role: "Full-stack, Contract",
         date: "June 2025 - Present",
-        description: "Developed a scheduling system for medical caregivers, monitoring, incetives management and two way sync across multiple CRMs",
+        description:
+            "Developed a scheduling system for medical caregivers, monitoring, incetives management and two way sync across multiple CRMs",
         link: "/work/careshift",
     },
     {
@@ -29,7 +31,7 @@ const experience = [
         logo: "/img/venus-remedies.png",
         role: "Software engineer intern",
         date: "Jan 2024 - April 2025",
-        link: "/work/venus-remedies-gasar-project",
+        link: "https://venusremedies.com",
     },
     {
         company: "BairesDev",
@@ -37,31 +39,44 @@ const experience = [
         role: "Technical Writer",
         date: "June 2023 - Mar 2024",
         link: "/work/bairesdev",
-    }
-]
+    },
+];
 
 export function Experience() {
     return (
         <div className="space-y-8">
             <h2 className="text-xl">Experience</h2>
             <div className="space-y-4">
-                {
-                    experience.map((e, i) => (
-                        <React.Fragment key={i}>
-                            <Link href={e.link} className="flex gap-4 items-center hover:brightness-150 transition-default">
-                                <img src={e.logo} className="size-8 rounded aspect-square bg-slate-800" />
-                                <p className="grow">{e.role} — <span className="text-primary">{e.company}</span></p>
-                                <p>{e.date}</p>
-                            </Link>
-                            <hr />
-                        </React.Fragment>
-                    ))
-                }
-                <Link href={"/work/others"} className="flex gap-4 items-center hover:brightness-150 transition-default">
-                    <p className="ml-auto">→ View More</p>
+                {experience.map((e, i) => (
+                    <React.Fragment key={i}>
+                        <Link
+                            href={e.link}
+                            className="transition-default flex items-center gap-4 hover:brightness-150">
+                            <img
+                                src={e.logo}
+                                className="aspect-square size-8 rounded bg-slate-800 max-md:size-6"
+                            />
+                            <p className="grow max-md:text-sm">
+                                {e.role} —{" "}
+                                <span className="text-primary">
+                                    {e.company}{" "}
+                                    {e.company !== "Venus Remedies" && <span className="md:hidden">
+                                        (Read more)
+                                    </span>}
+                                </span>
+                            </p>
+                            <p className="max-md:text-sm">{e.date}</p>
+                        </Link>
+                        <hr />
+                    </React.Fragment>
+                ))}
+                <Link
+                    href={"/work/others"}
+                    className="transition-default flex items-center gap-4 hover:brightness-150">
+                    <p className="ml-auto max-md:text-sm">→ View More</p>
                 </Link>
                 <hr />
             </div>
         </div>
-    )
+    );
 }

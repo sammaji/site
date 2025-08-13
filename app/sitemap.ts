@@ -32,7 +32,6 @@ query Publication {
 	const blogs: MetadataRoute.Sitemap = data.data.publication.posts.edges.map(
 		(e: any) => ({
 			url: e.node.url.replace("blog.sammaji.tech", "sammaji.tech/blog"),
-			changeFrequency: "monthly",
 			lastModified: new Date(e.node.updatedAt),
 			priority: 0.7,
 		}),
