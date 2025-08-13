@@ -1,1 +1,1 @@
-So you really loved my work? Alright alright, I'll work with you. Book a [call](https://cal.com/sammaji/introductory-call) or shoot me an [email](mailto:samyabratamaji334@gmail.com).
+Shoot me an [email](mailto:samyabratamaji334@gmail.com) or say hi on [twitter](https://x.com/sammaji15) (I still call it twitter).
