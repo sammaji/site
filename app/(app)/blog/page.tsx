@@ -116,9 +116,6 @@ export default async function Page() {
     const sortedKeys = Object.keys(data).toSorted(
         (a, b) => parseInt(b) - parseInt(a),
     );
-
-    console.log(data, sortedKeys);
-
     return (
         <React.Fragment>
             <div>
