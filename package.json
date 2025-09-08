@@ -11,9 +11,9 @@
     },
     "dependencies": {
         "@apollo/client": "^3.13.3",
-        "@payloadcms/db-postgres": "^3.27.0",
-        "@payloadcms/next": "^3.27.0",
-        "@payloadcms/richtext-lexical": "^3.27.0",
+        "@payloadcms/db-postgres": "^3.54.0",
+        "@payloadcms/next": "^3.54.0",
+        "@payloadcms/richtext-lexical": "^3.54.0",
         "@radix-ui/react-dialog": "^1.1.14",
         "@radix-ui/react-scroll-area": "^1.2.3",
         "@radix-ui/react-slot": "^1.2.3",
@@ -28,7 +28,7 @@
         "lucide-react": "^0.477.0",
         "next": "15.2.1",
         "next-mdx-remote": "^5.0.0",
-        "payload": "^3.27.0",
+        "payload": "^3.54.0",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "remark": "^15.0.1",
@@ -49,6 +49,5 @@
         "tailwindcss": "^4",
         "tsx": "^4.20.3",
         "typescript": "^5"
-    },
-    "packageManager": "pnpm@10.10.0+sha512.d615db246fe70f25dcfea6d8d73dee782ce23e2245e3c4f6f888249fb568149318637dca73c2c5c8ef2a4ca0d5657fb9567188bfab47f566d1ee6ce987815c39"
+    }
 }
