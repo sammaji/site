@@ -1,8 +1,8 @@
-import { payload } from "@/lib/payload";
 import axios from "axios";
 import { format } from "date-fns";
 import Link from "next/link";
 import React from "react";
+import cms from "@/public/cms.json";
 
 type HashnodePosts = {
     data: {
@@ -21,27 +21,13 @@ type HashnodePosts = {
     };
 };
 
-type CmsPosts = {
-    docs: {
-        id: number;
-        content: {
-            title: string;
-        };
-        seo: {
-            slug: string;
-        };
-        updatedAt: string;
-        createdAt: string;
-    }[];
-};
-
 // Consolidated post type for rendering
 type Post = {
     title: string;
     slug: string;
     publishedAt: Date;
     year: number;
-    source: "hashnode" | "cms";
+    source: "hashnode" | "local";
 };
 
 async function getHashnodeBlogs(): Promise<HashnodePosts> {
@@ -68,14 +54,6 @@ query Publication {
     return data;
 }
 
-async function getCmsBlogs(): Promise<CmsPosts> {
-    const data = await payload.find({
-        collection: "blog",
-        limit: 10,
-    });
-    return data as CmsPosts;
-}
-
 function groupBy(xs: any[], key: string) {
     return xs.reduce((rv: Record<string, any[]>, x: any) => {
         (rv[x[key]] ??= []).push(x);
@@ -84,27 +62,25 @@ function groupBy(xs: any[], key: string) {
 }
 
 async function organisePosts(): Promise<Record<string, Post[]>> {
-    const [hashnodeData, cmsData] = await Promise.all([
-        getHashnodeBlogs(),
-        getCmsBlogs(),
-    ]);
+    const hashnodeData = await getHashnodeBlogs();
 
     const hashnodePosts = hashnodeData.data.publication.posts.edges.map(x => ({
         title: x.node.title,
         slug: x.node.slug,
         publishedAt: new Date(x.node.publishedAt),
         year: new Date(x.node.publishedAt).getFullYear(),
+        source: "hashnode",
     }));
 
-    const cmsPosts = cmsData.docs.map((doc) => ({
-        title: doc.content.title,
-        slug: doc.seo.slug,
-        publishedAt: new Date(doc.createdAt),
-        year: new Date(doc.createdAt).getFullYear(),
-        source: "cms",
+    const localPosts = cms.map((doc) => ({
+        title: doc.title,
+        slug: doc.slug,
+        publishedAt: new Date(doc.published_at),
+        year: new Date(doc.published_at).getFullYear(),
+        source: "local",
     }));
 
-    const sortedPosts = [...hashnodePosts, ...cmsPosts].sort(
+    const sortedPosts = [...hashnodePosts, ...localPosts].sort(
         (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
     );
     const groupedPosts = groupBy(sortedPosts, "year");
@@ -135,7 +111,7 @@ export default async function Page() {
                                             <React.Fragment key={j}>
                                                 <div className="transition-default flex items-center gap-2 py-4 hover:brightness-150">
                                                     <Link
-                                                        href={post.source === "cms" ? `/blog/${post.slug}` : `https://blog.sammaji.tech/${post.slug}`}
+                                                        href={post.source === "local" ? `/blog/${post.slug}` : `https://blog.sammaji.tech/${post.slug}`}
                                                         className="text-muted-foreground line-clamp-1 grow">
                                                         {post.title}
                                                     </Link>

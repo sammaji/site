@@ -1,86 +1,78 @@
-import RichText from "@/components/rich-text";
-import { payload } from "@/lib/payload";
-import { format } from "date-fns";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { promises as fs } from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { MDXRemote } from 'next-mdx-remote/rsc';
+import { notFound } from 'next/navigation';
+import { format } from 'date-fns';
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-    const { slug } = await params as { slug: string };
-    const data = await payload.find({
-        collection: "blog",
-        where: {
-            // @ts-ignore
-            ["seo.slug"]: slug,
-        },
-        select: {
-            content: {
-                title: true,
-                description: true,
-            },
-            seo: {
-                seo_title: true,
-                seo_description: true,
-                slug: true,
-            },
-        },
-        limit: 1,
-    });
+const contentDir = path.join(process.cwd(), 'md', 'blog');
 
-    if (data.docs.length === 0) {
+async function getPost(slug: string) {
+    const filePath = path.join(contentDir, `${slug}.md`);
+    try {
+        const fileContent = await fs.readFile(filePath, 'utf-8');
+        const { data, content } = matter(fileContent);
+        return { data, content };
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const post = await getPost(params.slug);
+
+    if (!post) {
         return {
-            title: "404 not found",
-            description: "Page not found",
-        } as Metadata;
-    };
+            title: '404 Not Found',
+            description: 'Page not found',
+        };
+    }
 
-    const doc = data.docs[0];
-    const title = doc.seo.seo_title || doc.content.title;
-    const description = doc.seo.seo_description || "";
+    const { data } = post;
+    const title = data.seo_title || data.title;
+    const description = data.seo_description || data.description || '';
 
-    const metadata: Metadata = {
+    return {
         title,
         description,
         openGraph: { title, description },
-        authors: [{ name: "Samyabrata Maji" }],
-        publisher: "Samyabrata Maji",
+        authors: [{ name: 'Samyabrata Maji' }],
+        publisher: 'Samyabrata Maji',
         alternates: {
-            canonical: `https://www.sammaji.tech/blog/${slug}`,
+            canonical: `https://www.sammaji.tech/blog/${params.slug}`,
         },
         twitter: {
             title,
             description,
-            card: "summary_large_image",
+            card: 'summary_large_image',
         },
-        robots: "index, follow"
+        robots: 'index, follow',
     };
-    return metadata;
 }
 
-export default async function Page({
-    params,
-}: {
-    params: Promise<{ slug: string }>;
-}) {
-    const { slug } = await params;
-    const data = await payload.find({
-        collection: "blog",
-        where: {
-            // @ts-ignore
-            ["seo.slug"]: slug,
-        }
-    });
+export default async function Page({ params }: { params: { slug: string } }) {
+    const post = await getPost(params.slug);
 
-    if (!data || data.docs.length === 0) return notFound();
-    const doc = data.docs[0];
+    if (!post) {
+        return notFound();
+    }
+
+    const { data, content } = post;
 
     return (
         <div className="space-y-8">
             <div>
-                <h1 className="text-xl">{doc.content.title}</h1>
-                <p className="text-sm inline-flex gap-1 items-center">Last edited on {format(doc.updatedAt, "LLL d, yyyy")}</p>
+                <h1 className="text-xl">{data.title}</h1>
+                {data.last_edited_at && (
+                    <p className="text-sm inline-flex gap-1 items-center">
+                        Last edited on {format(new Date(data.last_edited_at), 'LLL d, yyyy')}
+                    </p>
+                )}
             </div>
-
-            <RichText data={doc.content.content} />
+            <article className="prose dark:prose-invert">
+                <MDXRemote source={content} />
+            </article>
         </div>
     );
 }
