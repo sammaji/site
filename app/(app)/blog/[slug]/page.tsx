@@ -24,10 +24,12 @@ async function getPost(slug: string) {
         return { data: { title }, content };
     }
 
+    // @ts-ignore
     if (!post.file) {
         return null;
     }
 
+    // @ts-ignore
     const filePath = path.join(process.cwd(), 'md', 'blog', post.file);
 
     try {
