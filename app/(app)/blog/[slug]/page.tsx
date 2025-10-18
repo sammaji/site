@@ -5,11 +5,31 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { Metadata } from 'next';
-
-const contentDir = path.join(process.cwd(), 'md', 'blog');
+import postsJson from '@/public/cms.json';
+import "highlight.js/styles/github-dark-dimmed.css";
+import rehypeHighlight from 'rehype-highlight'
+import remarkGfm from 'remark-gfm'
+import remarkDirective from 'remark-directive'
+import React from 'react';
+import { getHashnodePost } from '@/lib/hashnode';
 
 async function getPost(slug: string) {
-    const filePath = path.join(contentDir, `${slug}.md`);
+    const post = postsJson.find(post => post.slug === slug);
+    if (!post) {
+        return null;
+    }
+
+    if (post.source === "hashnode") {
+        const { title, content } = await getHashnodePost(post.slug);
+        return { data: { title }, content };
+    }
+
+    if (!post.file) {
+        return null;
+    }
+
+    const filePath = path.join(process.cwd(), 'md', 'blog', post.file);
+
     try {
         const fileContent = await fs.readFile(filePath, 'utf-8');
         const { data, content } = matter(fileContent);
@@ -19,8 +39,9 @@ async function getPost(slug: string) {
     }
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-    const post = await getPost(params.slug);
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const slug = (await props.params).slug;
+    const post = await getPost(slug);
 
     if (!post) {
         return {
@@ -40,7 +61,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         authors: [{ name: 'Samyabrata Maji' }],
         publisher: 'Samyabrata Maji',
         alternates: {
-            canonical: `https://www.sammaji.tech/blog/${params.slug}`,
+            canonical: `https://www.sammaji.com/blog/${slug}`,
         },
         twitter: {
             title,
@@ -51,8 +72,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-    const post = await getPost(params.slug);
+export default async function Page(props: { params: Promise<{ slug: string }> }) {
+    const slug = (await props.params).slug;
+    const post = await getPost(slug);
 
     if (!post) {
         return notFound();
@@ -70,8 +92,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     </p>
                 )}
             </div>
-            <article className="prose dark:prose-invert">
-                <MDXRemote source={content} />
+            <article className="markdown prose dark:prose-invert">
+                <MDXRemote source={content} options={{
+                    mdxOptions: {
+                        remarkPlugins: [remarkDirective, remarkGfm],
+                        rehypePlugins: [rehypeHighlight]
+                    }
+                }} />
             </article>
         </div>
     );

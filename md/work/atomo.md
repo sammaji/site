@@ -30,4 +30,4 @@ I plan to open source the project soon! (As soon as I clean my sloppy code.)
 
 ## Waitlist
 
-I'll notify you when atomo is stable and ready to use → [Atomo waitlist](https://atomo.sammaji.tech).
+I'll notify you when atomo is stable and ready to use → [Atomo waitlist](https://atomo.sammaji.com).
