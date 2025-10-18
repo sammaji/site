@@ -14,6 +14,6 @@ export default function robots(): MetadataRoute.Robots {
 				disallow: "/api/",
 			},
 		],
-		sitemap: "https://www.sammaji.tech/sitemap.xml",
+		sitemap: "https://www.sammaji.com/sitemap.xml",
 	};
 }

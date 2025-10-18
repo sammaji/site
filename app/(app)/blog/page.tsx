@@ -1,39 +1,7 @@
-import { payload } from "@/lib/payload";
-import axios from "axios";
 import { format } from "date-fns";
 import Link from "next/link";
 import React from "react";
-
-type HashnodePosts = {
-    data: {
-        publication: {
-            posts: {
-                edges: {
-                    node: {
-                        title: string;
-                        url: string;
-                        slug: string;
-                        publishedAt: string;
-                    };
-                }[];
-            };
-        };
-    };
-};
-
-type CmsPosts = {
-    docs: {
-        id: number;
-        content: {
-            title: string;
-        };
-        seo: {
-            slug: string;
-        };
-        updatedAt: string;
-        createdAt: string;
-    }[];
-};
+import cms from "@/public/cms.json";
 
 // Consolidated post type for rendering
 type Post = {
@@ -41,40 +9,8 @@ type Post = {
     slug: string;
     publishedAt: Date;
     year: number;
-    source: "hashnode" | "cms";
+    source: "hashnode" | "local";
 };
-
-async function getHashnodeBlogs(): Promise<HashnodePosts> {
-    const { data } = await axios.post<HashnodePosts>(
-        "https://gql.hashnode.com",
-        {
-            query: `
-query Publication {
-  publication(host: "sammaji.hashnode.dev") {
-    posts(first: 50) {
-      edges {
-        node {
-          title
-          url
-          slug
-          publishedAt
-        }
-      }
-    }
-  }
-}
-` },
-    );
-    return data;
-}
-
-async function getCmsBlogs(): Promise<CmsPosts> {
-    const data = await payload.find({
-        collection: "blog",
-        limit: 10,
-    });
-    return data as CmsPosts;
-}
 
 function groupBy(xs: any[], key: string) {
     return xs.reduce((rv: Record<string, any[]>, x: any) => {
@@ -84,30 +20,15 @@ function groupBy(xs: any[], key: string) {
 }
 
 async function organisePosts(): Promise<Record<string, Post[]>> {
-    const [hashnodeData, cmsData] = await Promise.all([
-        getHashnodeBlogs(),
-        getCmsBlogs(),
-    ]);
-
-    const hashnodePosts = hashnodeData.data.publication.posts.edges.map(x => ({
-        title: x.node.title,
-        slug: x.node.slug,
-        publishedAt: new Date(x.node.publishedAt),
-        year: new Date(x.node.publishedAt).getFullYear(),
+    const posts = cms.map((doc) => ({
+        title: doc.title,
+        slug: doc.slug,
+        publishedAt: new Date(doc.published_at),
+        year: new Date(doc.published_at).getFullYear(),
+        source: doc.source as "hashnode" | "local",
     }));
 
-    const cmsPosts = cmsData.docs.map((doc) => ({
-        title: doc.content.title,
-        slug: doc.seo.slug,
-        publishedAt: new Date(doc.createdAt),
-        year: new Date(doc.createdAt).getFullYear(),
-        source: "cms",
-    }));
-
-    const sortedPosts = [...hashnodePosts, ...cmsPosts].sort(
-        (a, b) => b.publishedAt.getTime() - a.publishedAt.getTime(),
-    );
-    const groupedPosts = groupBy(sortedPosts, "year");
+    const groupedPosts = groupBy(posts, "year");
     return groupedPosts;
 }
 
@@ -135,7 +56,7 @@ export default async function Page() {
                                             <React.Fragment key={j}>
                                                 <div className="transition-default flex items-center gap-2 py-4 hover:brightness-150">
                                                     <Link
-                                                        href={post.source === "cms" ? `/blog/${post.slug}` : `https://blog.sammaji.tech/${post.slug}`}
+                                                        href={`https://www.sammaji.com/blog/${post.slug}`}
                                                         className="text-muted-foreground line-clamp-1 grow">
                                                         {post.title}
                                                     </Link>

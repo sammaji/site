@@ -1,0 +1,170 @@
+[
+  {
+    "title": "Create dropdown menu (tui) in c",
+    "slug": "create-dropdown-menu-tui-in-c",
+    "published_at": "2025-03-10T05:18:49.542Z",
+    "updated_at": "2025-10-18T07:09:00.436Z",
+    "tags": [
+      "TUI",
+      "C",
+      "cli"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Build and deploy a chat application using Socket.io and Redis.",
+    "slug": "build-and-deploy-a-chat-application-using-socketio-and-redis",
+    "published_at": "2024-08-26T10:37:34.985Z",
+    "updated_at": "1970-01-01T00:00:00.000Z",
+    "tags": [
+      "SocketIO",
+      "render",
+      "GCP",
+      "JavaScript",
+      "Web Development"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "How to show progress while downloading data in node.js",
+    "slug": "how-to-show-progress-while-downloading-data-in-nodejs",
+    "published_at": "2024-04-27T05:47:26.781Z",
+    "updated_at": "1970-01-01T00:00:00.000Z",
+    "tags": [
+      "Node.js",
+      "JavaScript",
+      "Beginner Developers"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Everything about Data Fetching & the JavaScript Fetch API.",
+    "slug": "everything-about-data-fetching-the-javascript-fetch-api",
+    "published_at": "2024-03-12T14:54:13.360Z",
+    "updated_at": "2024-07-14T11:33:22.836Z",
+    "tags": [
+      "JavaScript",
+      "Tutorial",
+      "Web Development"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Beginner's guide to monorepos and turborepo.",
+    "slug": "beginners-guide-to-monorepos-and-turborepo",
+    "published_at": "2023-12-09T11:41:07.844Z",
+    "updated_at": "2024-07-14T11:35:36.412Z",
+    "tags": [
+      "turborepo",
+      "monorepo",
+      "development",
+      "JavaScript",
+      "TypeScript"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Detailed Introduction To Prisma ORM",
+    "slug": "detailed-introduction-to-prisma-orm",
+    "published_at": "2023-09-25T06:54:08.691Z",
+    "updated_at": "2024-07-14T11:35:52.219Z",
+    "tags": [
+      "prisma",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Vite: The Fast, Simple, and Efficient Build Tool for Web Developers",
+    "slug": "vite-the-fast-simple-and-efficient-build-tool-for-web-developers",
+    "published_at": "2023-02-26T11:30:35.636Z",
+    "updated_at": "2024-07-14T11:36:16.154Z",
+    "tags": [
+      "vite",
+      "Build tool",
+      "Web Development",
+      "webdev",
+      "Hot Module Replacement"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Introduction to Tailwind",
+    "slug": "introduction-to-tailwind",
+    "published_at": "2023-02-17T14:41:22.145Z",
+    "updated_at": "2024-07-14T11:36:29.246Z",
+    "tags": [
+      "Tailwind CSS",
+      "Frontend Development",
+      "frontend",
+      "Web Development",
+      "webdev"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "A Short Introduction to React",
+    "slug": "a-short-introduction-to-react",
+    "published_at": "2023-02-13T09:13:34.862Z",
+    "updated_at": "2024-07-14T11:36:46.812Z",
+    "tags": [
+      "React",
+      "Web Development",
+      "introduction",
+      "JavaScript",
+      "JSX"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "The Complete Guide to User Authentication in Firebase",
+    "slug": "the-complete-guide-to-user-authentication-in-firebase",
+    "published_at": "2023-02-10T11:09:32.999Z",
+    "updated_at": "2024-07-14T11:37:13.048Z",
+    "tags": [
+      "Firebase",
+      "JavaScript",
+      "Web Development",
+      "webdev"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "JavaScript Datatypes in Detail",
+    "slug": "javascript-datatypes-in-detail",
+    "published_at": "2023-01-08T13:17:59.749Z",
+    "updated_at": "2023-02-27T09:47:14.767Z",
+    "tags": [
+      "JavaScript",
+      "Web Development",
+      "beginner"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Learn Git the FAST way.",
+    "slug": "learn-git-the-fast-way",
+    "published_at": "2023-01-06T08:12:40.921Z",
+    "updated_at": "2023-01-07T16:39:57.534Z",
+    "tags": [
+      "Git",
+      "learning"
+    ],
+    "source": "hashnode"
+  },
+  {
+    "title": "Write semantic HTML",
+    "slug": "write-semantic-html",
+    "published_at": "2022-12-16T19:37:29.217Z",
+    "updated_at": "1970-01-01T00:00:00.000Z",
+    "tags": [
+      "semantichtml",
+      "HTML tags ",
+      "HTML5"
+    ],
+    "source": "hashnode"
+  }
+]

@@ -240,7 +240,7 @@ p {
     }
     a:not(.base)  { @apply text-primary underline underline-offset-4; }
 	img {
-		@apply rounded-lg not-first:mt-4;
+		@apply rounded-lg w-full not-first:mt-4;
 	}
 	code:not(pre code) {
 		@apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
