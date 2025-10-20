@@ -16,7 +16,7 @@ type HashnodePost = {
 export async function getHashnodePost(slug: string) {
 	const query = `
 query Publication {
-  publication(host: "sammaji.com/blog") {
+  publication(host: "sammaji.hashnode.dev") {
     post(slug: "${slug}") {
       title
       content {

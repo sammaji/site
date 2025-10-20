@@ -76,7 +76,7 @@ async function getHashnodePosts() {
 		{
 			query: `
                 query Publication {
-                  publication(host: "sammaji.com/blog") {
+                  publication(host: "sammaji.hashnode.dev") {
                     posts(first: 50) {
                       edges {
                         node {
