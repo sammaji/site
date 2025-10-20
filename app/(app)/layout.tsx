@@ -2,6 +2,7 @@ import { Nav } from "@/components/nav";
 import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights"
 import "@/app/globals.css";
 
 const inter = Inter({
@@ -34,6 +35,7 @@ export default function RootLayout({
                     {children}
                 </div>
                 <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
