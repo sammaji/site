@@ -46,10 +46,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     const post = await getPost(slug);
 
     if (!post) {
-        return {
-            title: '404 Not Found',
-            description: 'Page not found',
-        };
+        return notFound();
     }
 
     const { data } = post;
@@ -59,15 +56,17 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     return {
         title,
         description,
-        openGraph: { title, description },
+        openGraph: { title, description, images: [data?.image] },
         authors: [{ name: 'Samyabrata Maji' }],
         publisher: 'Samyabrata Maji',
         alternates: {
             canonical: `https://www.sammaji.com/blog/${slug}`,
         },
+        keywords: data?.tags,
         twitter: {
             title,
             description,
+            images: [data?.image],
             card: 'summary_large_image',
         },
         robots: 'index, follow',

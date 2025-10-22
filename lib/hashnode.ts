@@ -8,6 +8,16 @@ type HashnodePost = {
 				content: {
 					markdown: string;
 				};
+				seo: {
+					title: string;
+					description: string;
+				};
+				ogMetaData: {
+					image: string;
+				};
+				tags: {
+					name: string;
+				}[];
 			};
 		};
 	};
@@ -22,9 +32,20 @@ query Publication {
       content {
         markdown
       }
+      seo {
+        title
+        description
+      }
+      ogMetaData {
+        image
+      }
+      tags {
+        name
+      }
     }
   }
-}`;
+}
+`;
 
 	const { data } = await axios.post<HashnodePost>(
 		"https://gql.hashnode.com",
@@ -39,5 +60,9 @@ query Publication {
 			/!\[(.*?)\]\((.*?)\s+align=".*?"\)/g,
 			"![$1]($2)",
 		),
+		tags: data?.data?.publication?.post?.tags?.map(t => t.name),
+		seo_title: data?.data?.publication?.post?.seo?.title,
+		seo_description: data?.data?.publication?.post?.seo?.description,
+		image: data?.data?.publication?.post?.ogMetaData?.image,
 	};
 }

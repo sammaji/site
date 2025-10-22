@@ -1,5 +1,16 @@
 [
   {
+    "title": "Remove trailing spaces in vim.",
+    "slug": "remove-trailing-spaces-in-vim",
+    "published_at": "2025-10-21T20:28:57.727Z",
+    "updated_at": "2025-10-22T05:37:46.357Z",
+    "tags": [
+      "vim",
+      "neovim"
+    ],
+    "source": "hashnode"
+  },
+  {
     "title": "Create dropdown menu (tui) in c",
     "slug": "create-dropdown-menu-tui-in-c",
     "published_at": "2025-03-10T05:18:49.542Z",
