@@ -12,8 +12,8 @@ type HashnodePost = {
 					title: string;
 					description: string;
 				};
-				ogMetaData: {
-					image: string;
+				coverImage: {
+					url: string;
 				};
 				tags: {
 					name: string;
@@ -36,8 +36,8 @@ query Publication {
         title
         description
       }
-      ogMetaData {
-        image
+      coverImage {
+        url
       }
       tags {
         name
@@ -63,6 +63,6 @@ query Publication {
 		tags: data?.data?.publication?.post?.tags?.map(t => t.name),
 		seo_title: data?.data?.publication?.post?.seo?.title,
 		seo_description: data?.data?.publication?.post?.seo?.description,
-		image: data?.data?.publication?.post?.ogMetaData?.image,
+		image: data?.data?.publication?.post?.coverImage?.url,
 	};
 }

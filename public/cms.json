@@ -1,9 +1,21 @@
 [
   {
+    "title": "Regex cheat-sheet.",
+    "slug": "regex-cheatsheet",
+    "published_at": "2025-10-30T05:21:00.487Z",
+    "updated_at": "1970-01-01T00:00:00.000Z",
+    "tags": [
+      "Regex",
+      "JavaScript",
+      "Programming Blogs"
+    ],
+    "source": "hashnode"
+  },
+  {
     "title": "Remove trailing spaces in vim.",
     "slug": "remove-trailing-spaces-in-vim",
     "published_at": "2025-10-21T20:28:57.727Z",
-    "updated_at": "2025-10-22T05:37:46.357Z",
+    "updated_at": "2025-10-22T06:07:51.533Z",
     "tags": [
       "vim",
       "neovim"

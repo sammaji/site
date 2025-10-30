@@ -20,8 +20,8 @@ async function getPost(slug: string) {
     }
 
     if (post.source === "hashnode") {
-        const { title, content } = await getHashnodePost(post.slug);
-        return { data: { title }, content };
+        const { title, content, image } = await getHashnodePost(post.slug);
+        return { data: { title, image }, content };
     }
 
     // @ts-ignore
@@ -50,8 +50,11 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     }
 
     const { data } = post;
-    const title = data.seo_title || data.title;
-    const description = data.seo_description || data.description || '';
+    // @ts-ignore
+    const title = data?.seo_title || data.title;
+
+    // @ts-ignore
+    const description = data?.seo_description || data.description || '';
 
     return {
         title,
