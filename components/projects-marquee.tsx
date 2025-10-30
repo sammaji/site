@@ -24,7 +24,7 @@ const marquee = [
     },
     {
         name: "Careshift",
-        src: "/img/careshift-dashboard.png",
+        src: "/img/careshift-dashboard.webp",
         href: "/work/careshift",
     },
     {
@@ -39,7 +39,7 @@ export function ProjectsMarquee() {
         <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
             <Marquee pauseOnHover className="[--duration:20s]">
                 {marquee.map((image, index) => (
-                    <Dialog>
+                    <Dialog key={index}>
                         <DialogTrigger asChild>
                             <img
                                 key={index}
