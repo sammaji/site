@@ -1,13 +1,21 @@
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import React from "react";
 
 const experience = [
     {
+        company: "Maxim AI",
+        logo: "/img/maxim_ai.jpeg",
+        role: "SDE-I, Full-time",
+        date: "Nov 2025 - Present",
+        description:
+            "Developed a scheduling system for medical caregivers, monitoring, incetives management and two way sync across multiple CRMs",
+        link: "https://www.getmaxim.ai/?ref=sammaji.com",
+    },
+    {
         company: "Careshift",
         logo: "/img/careshift.png",
         role: "Full-stack, Contract",
-        date: "June 2025 - Present",
+        date: "June 2025 - Nov 2025",
         description:
             "Developed a scheduling system for medical caregivers, monitoring, incetives management and two way sync across multiple CRMs",
         link: "/work/careshift",

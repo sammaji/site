@@ -233,12 +233,12 @@ p {
     h1 { @apply text-3xl ; }
 
 	p {
-		@apply text-muted-foreground text-lg not-first:mt-4;
+		@apply text-muted-foreground text-lg not-first:mt-4 inline-flex flex-wrap items-center gap-1;
 	}
     strong {
         @apply font-semibold;
     }
-    a:not(.base)  { @apply text-primary underline underline-offset-4; }
+    a:not(.base)  { @apply text-primary underline underline-offset-4 decoration-dotted; }
 	img {
 		@apply rounded-lg w-full not-first:mt-4;
 	}
@@ -262,6 +262,11 @@ p {
 		@apply list-decimal;
 	}
     hr { @apply mt-4; }
+
+    /* for embedded images, like images inside a paragraph tag */
+    p > img, p > a > img {
+        @apply size-5 rounded-sm ml-1 mt-0 mb-0 mr-0 p-0;
+    }
 }
 }
 

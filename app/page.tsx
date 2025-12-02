@@ -7,28 +7,29 @@ import { markdown } from "@/lib/markdown";
 import React from "react";
 
 export default async function Home() {
-	const intro = await markdown("home", "intro.md");
-	const contact = await markdown("home", "contact.md");
-	return (
-		<React.Fragment>
-			<img
-				className="transition-default w-48 -rotate-6 rounded-xl grayscale hover:rotate-0 hover:grayscale-0"
-				src="/img/me.jpeg"
-			/>
-			{typeof intro !== "number" && <Markdown html={intro.html} />}
+    const intro = await markdown("home", "intro.md");
+    const contact = await markdown("home", "contact.md");
+    return (
+        <React.Fragment>
+            <img
+                className="transition-default w-48 -rotate-6 rounded-xl grayscale hover:rotate-0 hover:grayscale-0"
+                src="/img/pfp.png"
+            />
 
-			<ProjectsMarquee />
-			<Experience />
-			<ProjectsCompact />
+            {typeof intro !== "number" && <Markdown html={intro.html} />}
 
-			<div className="space-y-8">
-				<h2 className="text-xl">Contact</h2>
-				{typeof contact !== "number" && (
-					<Markdown html={contact.html} />
-				)}
-			</div>
+            <ProjectsMarquee />
+            <Experience />
+            <ProjectsCompact />
 
-			{/*
+            <div className="space-y-8">
+                <h2 className="text-xl">Contact</h2>
+                {typeof contact !== "number" && (
+                    <Markdown html={contact.html} />
+                )}
+            </div>
+
+            {/*
             <div className="space-y-8">
                 <p><span className="font-medium">Newsletter</span></p>
                 <p>Receive occasional updates, tips, guides, etc.</p>
@@ -45,7 +46,7 @@ export default async function Home() {
             </div>
             */}
 
-			<Links url={links} />
-		</React.Fragment>
-	);
+            <Links url={links} />
+        </React.Fragment>
+    );
 }
