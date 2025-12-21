@@ -216,58 +216,58 @@
 }
 
 @layer components {
-p {
-	@apply text-gray-1100 text-lg;
-}
-
-.markdown {
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		@apply text-primary not-first:mt-8;
-	}
-
-    h1 { @apply text-3xl ; }
-
-	p {
-		@apply text-muted-foreground text-lg not-first:mt-4 inline-flex flex-wrap items-center gap-1;
-	}
-    strong {
-        @apply font-semibold;
+    p {
+        @apply text-gray-1100 text-lg;
     }
-    a:not(.base)  { @apply text-primary underline underline-offset-4 decoration-dotted; }
-	img {
-		@apply rounded-lg w-full not-first:mt-4;
-	}
-	code:not(pre code) {
-		@apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-	}
-	pre {
-		@apply overflow-scroll rounded-lg border bg-[#0B0B09] not-first:mt-4;
-		code {
-			@apply rounded-lg;
-		}
-	}
-	ul,
-	ol {
-		@apply my-6 ml-6 [&>li]:mt-2 [&>li]:text-muted-foreground;
-	}
-	ul {
-		@apply list-disc;
-	}
-	ol {
-		@apply list-decimal;
-	}
-    hr { @apply mt-4; }
 
-    /* for embedded images, like images inside a paragraph tag */
-    p > img, p > a > img {
-        @apply size-5 rounded-sm ml-1 mt-0 mb-0 mr-0 p-0;
+    .markdown {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            @apply text-primary not-first:mt-8;
+        }
+
+        h1 { @apply text-3xl ; }
+
+        p {
+            @apply text-muted-foreground text-lg not-first:mt-4 inline-flex flex-wrap items-center gap-1;
+        }
+        strong {
+            @apply font-semibold;
+        }
+        a:not(.base)  { @apply text-primary underline underline-offset-4 decoration-dotted; }
+        img {
+            @apply rounded-lg w-full not-first:mt-4;
+        }
+        code:not(pre code) {
+            @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+        }
+        pre {
+            @apply overflow-scroll rounded-lg border bg-[#0B0B09] not-first:mt-4;
+            code {
+                @apply rounded-lg;
+            }
+        }
+        ul,
+        ol {
+            @apply my-6 ml-6 [&>li]:mt-2 [&>li]:text-muted-foreground;
+        }
+        ul {
+            @apply list-disc;
+        }
+        ol {
+            @apply list-decimal;
+        }
+        hr { @apply mt-4; }
+
+        /* for embedded images, like images inside a paragraph tag */
+        p > a > img {
+            @apply size-5 rounded-sm ml-1 mt-0 mb-0 mr-0 p-0;
+        }
     }
-}
 }
 
 .transition-default {
