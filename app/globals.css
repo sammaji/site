@@ -233,7 +233,7 @@
         h1 { @apply text-3xl ; }
 
         p {
-            @apply text-muted-foreground text-lg not-first:mt-4 inline-flex flex-wrap items-center gap-1;
+            @apply text-muted-foreground text-lg not-first:mt-4;
         }
         strong {
             @apply font-semibold;
@@ -264,8 +264,13 @@
         hr { @apply mt-4; }
 
         /* for embedded images, like images inside a paragraph tag */
-        p > a > img {
-            @apply size-5 rounded-sm ml-1 mt-0 mb-0 mr-0 p-0;
+        p a:has(img) {
+            @apply inline-flex items-center gap-1 align-middle;
+        }
+
+        /* Keep your existing image sizing */
+        p a img {
+            @apply size-5 rounded-sm m-0 inline-block;
         }
     }
 }
