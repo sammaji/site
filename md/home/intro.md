@@ -1,8 +1,8 @@
 # sam maji
 
-Software engineer, based in India. Self-taught. Loves to code. Build things, break things.
+Software engineer, based in India. Self-taught. Loves to code. Build things.
 
-I have helped many early stage startups build their products fast and at scale, without breaking too many things.
+I have helped many early stage startups build their products fast and at scale.
 
 I'm working at  [![Maxim AI](/img/maxim_ai.jpeg)](https://www.getmaxim.ai/?ref=sammaji.com) [Maxim](https://www.getmaxim.ai/?ref=sammaji.com) as a software engineer. We are building [bifrost](https://www.getmaxim.ai/bifrost/?ref=sammaji.com) — the fastest open-source LLM & MCP gateway.
 
