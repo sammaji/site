@@ -6,7 +6,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const work: MetadataRoute.Sitemap = files("work").map(s => ({
 		url: `https://www.sammaji.com/work/${s}`,
 		changeFrequency: "monthly",
-		lastModified: new Date(),
 	}));
 
 	const blog: MetadataRoute.Sitemap = cmsJson.map(s => {
@@ -18,21 +17,30 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		};
 	});
 
+	const marketingPages: MetadataRoute.Sitemap = [
+		"/tailwind-cursor-styles",
+		"/llms-text-generator",
+	].map(url => ({
+		url: `https://www.sammaji.com${url}`,
+		changeFrequency: "monthly",
+	}));
+
 	return [
 		{
-			url: "https://sammaji.com",
+			url: "https://www.sammaji.com",
 			lastModified: new Date(),
 		},
 		{
-			url: "https://sammaji.com/blog",
+			url: "https://www.sammaji.com/blog",
 			changeFrequency: "weekly",
 			lastModified: new Date(),
 		},
 		...blog,
 		{
-			url: "https://sammaji.com/work",
+			url: "https://www.sammaji.com/work",
 			lastModified: new Date(),
 		},
 		...work,
+		...marketingPages,
 	];
 }
