@@ -23,6 +23,9 @@ export const content: Record<string, any[]> = {
 			slug: "artvy",
 		},
 		{
+			slug: "atomo",
+		},
+		{
 			slug: "bairesdev",
 		},
 		{
