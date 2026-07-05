@@ -23,6 +23,10 @@ const column_1: Work[] = [
 		title: "Maa Swaraswati",
 		thumbnail: "/artworks/pastel_maa_swaraswati.jpeg",
 	},
+	{
+		title: "Fish Hook",
+		thumbnail: "/artworks/fish_hook.jpeg",
+	},
 ];
 
 const column_2: Work[] = [
