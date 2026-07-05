@@ -37,7 +37,14 @@
 	--sidebar-accent: oklch(0.97 0 0);
 	--sidebar-accent-foreground: oklch(0.205 0 0);
 	--sidebar-border: oklch(0.922 0 0);
-	--sidebar-ring: oklch(0.708 0 0) --color-gray-100: #111110;
+	--sidebar-ring: oklch(0.708 0 0);
+	--color-gray-100: #111110;
+
+	--contribution-empty: #ebedf0;
+	--contribution-level-1: #9be9a8;
+	--contribution-level-2: #40c463;
+	--contribution-level-3: #30a14e;
+	--contribution-level-4: #216e39;
 
 	--gray-1000: #7c7b74;
 	--gray-1100: #b5b3ad;
@@ -97,6 +104,12 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(0.269 0 0);
 	--sidebar-ring: oklch(0.439 0 0);
+
+	--contribution-empty: #161b22;
+	--contribution-level-1: #0e4429;
+	--contribution-level-2: #006d32;
+	--contribution-level-3: #26a641;
+	--contribution-level-4: #39d353;
 
 	--gray-1000: #7c7b74;
 	--gray-1100: #b5b3ad;
@@ -185,25 +198,25 @@
 	--color-gray-alpha-800: var(--gray-alpha-800);
 	--color-gray-alpha-900: var(--gray-alpha-900);
 
-  --animate-marquee: marquee var(--duration) infinite linear;
-  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
- 
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(calc(-100% - var(--gap)));
-    }
-  }
-  @keyframes marquee-vertical {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(calc(-100% - var(--gap)));
-    }
-  }
+	--animate-marquee: marquee var(--duration) infinite linear;
+	--animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+	@keyframes marquee {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(calc(-100% - var(--gap)));
+		}
+	}
+	@keyframes marquee-vertical {
+		from {
+			transform: translateY(0);
+		}
+		to {
+			transform: translateY(calc(-100% - var(--gap)));
+		}
+	}
 }
 
 @layer base {
@@ -216,78 +229,88 @@
 }
 
 @layer components {
-    p {
-        @apply text-gray-1100 text-lg;
-    }
+	p {
+		@apply text-gray-1100 text-lg;
+	}
 
-    .markdown {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            @apply text-primary not-first:mt-8;
-        }
+	.markdown {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			@apply text-primary not-first:mt-8;
+		}
 
-        h1 { @apply text-3xl ; }
+		h1 {
+			@apply text-3xl;
+		}
 
-        p {
-            @apply text-muted-foreground text-lg not-first:mt-4;
-        }
-        strong {
-            @apply font-semibold;
-        }
-        a:not(.base)  { @apply text-primary underline underline-offset-4 decoration-dotted; }
-        img {
-            @apply rounded-lg w-full not-first:mt-4;
-        }
-        code:not(pre code) {
-            @apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
-        }
-        pre {
-            @apply overflow-scroll rounded-lg border bg-[#0B0B09] not-first:mt-4;
-            code {
-                @apply rounded-lg;
-            }
-        }
-        ul,
-        ol {
-            @apply my-6 ml-6 [&>li]:mt-2 [&>li]:text-muted-foreground;
-        }
-        ul {
-            @apply list-disc;
-        }
-        ol {
-            @apply list-decimal;
-        }
-        hr { @apply mt-4; }
+		p {
+			@apply text-muted-foreground text-lg not-first:mt-4;
+		}
+		strong {
+			@apply font-semibold;
+		}
+		a:not(.base) {
+			@apply text-primary underline decoration-dotted underline-offset-4;
+		}
+		img {
+			@apply w-full rounded-lg not-first:mt-4;
+		}
+		code:not(pre code) {
+			@apply bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold;
+		}
+		pre {
+			@apply overflow-scroll rounded-lg border bg-[#0B0B09] not-first:mt-4;
+			code {
+				@apply rounded-lg;
+			}
+		}
+		ul,
+		ol {
+			@apply [&>li]:text-muted-foreground my-6 ml-6 [&>li]:mt-2;
+		}
+		ul {
+			@apply list-disc;
+		}
+		ol {
+			@apply list-decimal;
+		}
+		hr {
+			@apply mt-4;
+		}
 
-        /* for embedded images, like images inside a paragraph tag */
-        p a:has(img) {
-            @apply inline-flex items-center gap-1 align-middle;
-        }
+		/* for embedded images, like images inside a paragraph tag */
+		p a:has(img) {
+			@apply inline-flex items-center gap-1 align-middle;
+		}
 
-        /* Keep your existing image sizing */
-        p a img {
-            @apply size-5 rounded-sm m-0 inline-block;
-        }
-    }
+		/* Keep your existing image sizing */
+		p a img {
+			@apply m-0 inline-block size-5 rounded-sm;
+		}
+	}
 }
 
 .transition-default {
-    @apply transition-all duration-300 ease-[cubic-bezier(0,0,0.58,1)];
+	@apply transition-all duration-300 ease-[cubic-bezier(0,0,0.58,1)];
 }
 
+.contributions-calendar [data-level="0"] {
+	outline: none;
+	stroke: transparent;
+}
 
 /* CAROUSEL */
 .embla {
-  overflow: hidden;
+	overflow: hidden;
 }
 .embla__container {
-  display: flex;
+	display: flex;
 }
 .embla__slide {
-  flex: 0 0 100%;
-  min-width: 0;
+	flex: 0 0 100%;
+	min-width: 0;
 }
