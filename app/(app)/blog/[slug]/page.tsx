@@ -1,5 +1,6 @@
 import { BackButton } from "@/components/back-button";
-import { getHashnodePost } from "@/lib/hashnode";
+import { deriveTitleAndDescription } from "@/lib/markdown";
+import { ogImageUrl } from "@/lib/og";
 import postsJson from "@/public/cms.json";
 import { format } from "date-fns";
 import { promises as fs } from "fs";
@@ -19,17 +20,10 @@ async function getPost(slug: string) {
 		return null;
 	}
 
-	if (post.source === "hashnode") {
-		const { title, content, image } = await getHashnodePost(post.slug);
-		return { data: { title, image }, content };
-	}
-
-	// @ts-ignore
 	if (!post.file) {
 		return null;
 	}
 
-	// @ts-ignore
 	const filePath = path.join(process.cwd(), "md", "blog", post.file);
 
 	try {
@@ -51,17 +45,28 @@ export async function generateMetadata(props: {
 		return notFound();
 	}
 
-	const { data } = post;
+	const { data, content } = post;
 	// @ts-ignore
 	const title = data?.seo_title || data.title;
 
 	// @ts-ignore
-	const description = data?.seo_description || data.description || "";
+	const description =
+		data?.seo_description ||
+		data.description ||
+		deriveTitleAndDescription(data, content).description;
+
+	const image = data?.image || ogImageUrl({ title, description });
 
 	return {
 		title,
 		description,
-		openGraph: { title, description, images: [data?.image] },
+		openGraph: {
+			title,
+			description,
+			siteName: "Samyabrata Maji",
+			type: "article",
+			images: [image],
+		},
 		authors: [{ name: "Samyabrata Maji" }],
 		publisher: "Samyabrata Maji",
 		alternates: {
@@ -71,7 +76,7 @@ export async function generateMetadata(props: {
 		twitter: {
 			title,
 			description,
-			images: [data?.image],
+			images: [image],
 			card: "summary_large_image",
 		},
 		robots: "index, follow",

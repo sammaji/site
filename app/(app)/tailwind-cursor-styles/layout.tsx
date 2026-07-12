@@ -1,9 +1,13 @@
+import { ogImageUrl } from "@/lib/og";
 import type { Metadata } from "next";
 
+const title = "Tailwind Cursor Styles Reference";
+const description =
+	"Searchable reference of Tailwind CSS cursor utilities with live hover previews and one-click copy for utility and CSS values.";
+
 export const metadata: Metadata = {
-	title: "Tailwind Cursor Styles Reference",
-	description:
-		"Searchable reference of Tailwind CSS cursor utilities with live hover previews and one-click copy for utility and CSS values.",
+	title,
+	description,
 	keywords: [
 		"tailwind cursor",
 		"tailwind css cursor classes",
@@ -15,17 +19,18 @@ export const metadata: Metadata = {
 		canonical: "https://www.sammaji.com/tailwind-cursor-styles",
 	},
 	openGraph: {
-		title: "Tailwind Cursor Styles Reference",
-		description:
-			"Complete list of Tailwind cursor utilities with live previews and copy buttons.",
+		title,
+		description,
 		url: "https://www.sammaji.com/tailwind-cursor-styles",
+		siteName: "Samyabrata Maji",
 		type: "website",
+		images: [ogImageUrl({ title, description })],
 	},
 	twitter: {
-		card: "summary",
-		title: "Tailwind Cursor Styles Reference",
-		description:
-			"Search and preview every Tailwind cursor utility, then copy the Tailwind or CSS value.",
+		card: "summary_large_image",
+		title,
+		description,
+		images: [ogImageUrl({ title, description })],
 	},
 	robots: {
 		index: true,

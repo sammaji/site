@@ -16,6 +16,39 @@ export async function markdown(...paths: string[]) {
 
 	return {
 		frontmatter: data,
+		content,
 		html: html.toString(),
 	};
+}
+
+function stripMarkdown(line: string) {
+	return line
+		.replace(/!\[[^\]]*\]\([^)]*\)/g, "")
+		.replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+		.replace(/[#*_`>]/g, "")
+		.trim();
+}
+
+export function deriveTitleAndDescription(
+	frontmatter: Record<string, unknown>,
+	content: string,
+) {
+	const lines = content
+		.split("\n")
+		.map(line => line.trim())
+		.filter(Boolean);
+
+	const headingLine = lines.find(line => line.startsWith("#"));
+	const title =
+		(frontmatter.title as string | undefined) ||
+		(headingLine ? stripMarkdown(headingLine) : "");
+
+	const paragraphLine = lines.find(
+		line => line !== headingLine && !line.startsWith("#"),
+	);
+	const description =
+		(frontmatter.description as string | undefined) ||
+		(paragraphLine ? stripMarkdown(paragraphLine).slice(0, 160) : "");
+
+	return { title, description };
 }

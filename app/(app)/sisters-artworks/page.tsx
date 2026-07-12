@@ -5,7 +5,32 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import { ogImageUrl } from "@/lib/og";
 import { cn } from "@/lib/utils";
+import type { Metadata } from "next";
+
+const title = "My Sister's Artworks";
+const description = "A small gallery of my sister's paintings and artworks.";
+
+export const metadata: Metadata = {
+	title,
+	description,
+	alternates: { canonical: "https://www.sammaji.com/sisters-artworks" },
+	openGraph: {
+		title,
+		description,
+		url: "https://www.sammaji.com/sisters-artworks",
+		siteName: "Samyabrata Maji",
+		type: "website",
+		images: [ogImageUrl({ title, description })],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title,
+		description,
+		images: [ogImageUrl({ title, description })],
+	},
+};
 
 type Work = {
 	date?: string;

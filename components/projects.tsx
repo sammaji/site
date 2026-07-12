@@ -5,14 +5,14 @@ import React from "react";
 import { gradients } from "./gradients";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
-type Project = {
+export type Project = {
 	name: string;
 	description: string | React.ReactNode;
 	url: string;
 	image?: string;
 };
 
-const projects: Project[] = [
+export const projects: Project[] = [
 	{
 		name: "atomo",
 		description:
@@ -41,7 +41,7 @@ const projects: Project[] = [
 	},
 ];
 
-const compactProjects: Omit<Project, "image">[] = [
+export const compactProjects: Omit<Project, "image">[] = [
 	// {
 	// 	name: "mox",
 	// 	description:
@@ -65,23 +65,23 @@ const compactProjects: Omit<Project, "image">[] = [
 			"flexible server-side caching middleware for hono-js applications.",
 		url: "https://github.com/sammaji/hono-server-cache",
 	},
-	{
-		name: "tinytui",
-		description:
-			"declarative event driven composable zero-dependency tui library in libc based on elm architure.",
-		url: "https://github.com/sammaji/tinytui",
-	},
-	{
-		name: "kargs",
-		description: (
-			<>
-				cli arg parser that lets you define your own rules - parse case
-				sensitive or insensitive, order dependent or agnostic, type
-				checks or absurd stuff like <code>clang -ccc</code>.
-			</>
-		),
-		url: "https://github.com/sammaji/kargs",
-	},
+	// {
+	// 	name: "tinytui",
+	// 	description:
+	// 		"declarative event driven composable zero-dependency tui library in libc based on elm architure.",
+	// 	url: "https://github.com/sammaji/tinytui",
+	// },
+	// {
+	// 	name: "kargs",
+	// 	description: (
+	// 		<>
+	// 			cli arg parser that lets you define your own rules - parse case
+	// 			sensitive or insensitive, order dependent or agnostic, type
+	// 			checks or absurd stuff like <code>clang -ccc</code>.
+	// 		</>
+	// 	),
+	// 	url: "https://github.com/sammaji/kargs",
+	// },
 	{
 		name: "samscript",
 		description:
@@ -104,7 +104,7 @@ const compactProjects: Omit<Project, "image">[] = [
 		name: "browser-react-preview",
 		description:
 			"react mini playground with component inspector that does not require server side compilation",
-		url: "/work/browser-react-preview",
+		url: "/blog/browser-react-preview",
 	},
 	// {
 	// 	name: "term-ai",

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const experience = [
+export const experience = [
 	{
 		company: "Maxim AI",
 		logo: "/img/maxim_ai.jpeg",
