@@ -1,4 +1,8 @@
-# building a browser-native react playground
+---
+title: "building a browser-native react playground"
+published_at: 2026-05-11T00:00:00.000Z
+tags: ["React", "Compilers", "Web Development"]
+---
 
 Most React playgrounds cheat. They send your code to a server, bundle it, and stream back a result or they spin up a full WebContainer or some WASM-based nodejs runtime. Both approaches work, but they're heavy. I wanted to see how far I could get without any of that.
 

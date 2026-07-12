@@ -1,11 +1,14 @@
+import { ogImageUrl } from "@/lib/og";
 import type { Metadata } from "next";
 
 const canonicalUrl = "https://www.sammaji.com/llms-text-generator";
+const title = "Free LLMs.txt Generator (No Signup)";
+const description =
+	"Generate a production-ready llms.txt from any website for free. No signup, no account, unlimited usage.";
 
 export const metadata: Metadata = {
-	title: "Free LLMs.txt Generator (No Signup)",
-	description:
-		"Generate a production-ready llms.txt from any website for free. No signup, no account, unlimited usage.",
+	title,
+	description,
 	keywords: [
 		"llms.txt generator",
 		"free llms txt generator",
@@ -25,18 +28,18 @@ export const metadata: Metadata = {
 		"max-video-preview": -1,
 	},
 	openGraph: {
-		title: "Free LLMs.txt Generator (No Signup)",
-		description:
-			"Generate a production-ready llms.txt from any website for free. No signup, no account, unlimited usage.",
+		title,
+		description,
 		url: canonicalUrl,
-		siteName: "sammaji.com",
+		siteName: "Samyabrata Maji",
 		type: "website",
+		images: [ogImageUrl({ title, description })],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Free LLMs.txt Generator (No Signup, Unlimited)",
-		description:
-			"Generate a production-ready llms.txt from any website for free. No signup, no account, unlimited usage.",
+		title,
+		description,
+		images: [ogImageUrl({ title, description })],
 	},
 };
 
