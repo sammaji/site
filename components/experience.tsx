@@ -7,9 +7,8 @@ export const experience = [
 		logo: "/img/maxim_ai.jpeg",
 		role: "SDE-I, Full-time",
 		date: "Nov 2025 - Present",
-		description:
-			"Developed a scheduling system for medical caregivers, monitoring, incetives management and two way sync across multiple CRMs",
-		link: "https://www.getmaxim.ai/?ref=sammaji.com",
+		description: "Maxim AI is an ai observability and evaluation platform",
+		link: "/work/maxim-and-bifrost",
 	},
 	{
 		company: "Careshift",
