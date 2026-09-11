@@ -1,5 +1,5 @@
 import "@/app/globals.css";
-import { Nav } from "@/components/nav";
+import { SiteLayout } from "@/components/site-layout";
 import { ogImageUrl } from "@/lib/og";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -93,10 +93,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={`${inter.variable} ${geistMono.variable} dark antialiased`}>
-				<div className="text-gray-1200 mx-auto max-w-[692px] space-y-16 overflow-x-hidden px-6 py-12 antialiased sm:py-32 md:overflow-x-visible md:py-16">
-					<Nav />
-					{children}
-				</div>
+				<SiteLayout>{children}</SiteLayout>
 				<Analytics />
 				<SpeedInsights />
 				<script
