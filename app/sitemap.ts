@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const marketingPages: MetadataRoute.Sitemap = [
 		"/tailwind-cursor-styles",
 		"/llms-text-generator",
+		"/notepad",
 	].map(url => ({
 		url: `https://www.sammaji.com${url}`,
 		changeFrequency: "monthly",
